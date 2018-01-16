@@ -18,5 +18,17 @@ defmodule CwbGraphqlIntroWeb.Schema do
   end
 
   mutation do
+    field :user_register, :user do
+      arg :name, non_null(:string)
+      arg :meetup_profile_link, :string
+      arg :present, :boolean
+
+      resolve fn _root, args, _info ->
+        case CwbElixirMeetup.create_user(args) do
+          {:ok, user} -> {:ok, user}
+          _error -> { :error, "could not register user" }
+        end
+      end
+    end
   end
 end
