@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias CwbGraphqlIntro.CwbElixirMeetup.User
+alias CwbGraphqlIntro.Repo
+
+%User{
+  name: "Tiago Freire",
+  meetup_profile_link: "https://www.meetup.com/members/178012982/",
+  present: true
+} |> Repo.insert!
