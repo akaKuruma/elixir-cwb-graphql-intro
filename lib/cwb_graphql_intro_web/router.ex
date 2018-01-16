@@ -5,7 +5,11 @@ defmodule CwbGraphqlIntroWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", CwbGraphqlIntroWeb do
+  scope "/" do
     pipe_through :api
+
+    forward "/graphql", Absinthe.Plug, schema: CwbGraphqlIntroWeb.Schema
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: CwbGraphqlIntroWeb.Schema
   end
+
 end
