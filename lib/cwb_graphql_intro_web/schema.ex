@@ -16,4 +16,7 @@ defmodule CwbGraphqlIntroWeb.Schema do
       end
     end
   end
+
+  mutation do
+  end
 end
